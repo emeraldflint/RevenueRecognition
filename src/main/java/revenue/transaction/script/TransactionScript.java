@@ -29,23 +29,23 @@ public class TransactionScript {
                 dataGateway.insert(
                         contractId, revenue, dateSigned);
             } else if ("SPREADSHEET".equals(type)) {
-                // recognize 1/3 today
+                // booked one-third today
                 dataGateway.insert(
                         contractId, revenue.divide(new BigDecimal(3)), dateSigned);
-                // recognize 1/3 after 60 days
+                // booked one-third in sixty days
                 dataGateway.insert(
                         contractId, revenue.divide(new BigDecimal(3)), dateSigned.plusDays(60));
-                // recognize 1/3 after 90 days
+                // booked one-third in ninety days
                 dataGateway.insert(
                         contractId, revenue.divide(new BigDecimal(3)), dateSigned.plusDays(90));
             } else if ("DATABASE".equals(type)) {
-                // recognize 1/3 today
+                // booked one-third today
                 dataGateway.insert(
                         contractId, revenue.divide(new BigDecimal(3)), dateSigned);
-                // recognize 1/3 after 30 days
+                // booked one-third in thirty days
                 dataGateway.insert(
                         contractId, revenue.divide(new BigDecimal(3)), dateSigned.plusDays(30));
-                // recognize 1/3 after 60 days
+                // booked one-third in sixty days
                 dataGateway.insert(
                         contractId, revenue.divide(new BigDecimal(3)), dateSigned.plusDays(60));
 
