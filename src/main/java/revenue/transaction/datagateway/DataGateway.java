@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class DataGateway {
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/revenue_recognition";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/sys";
 
     //  Database credentials
     static final String USER = "root";
@@ -20,6 +20,21 @@ public class DataGateway {
 
     private static final String INSERT_CONTRACT_SQL =
             "INSERT INTO contracts (product_id, revenue, dateSigned) VALUES (?, ?, ?)";
+
+
+    private static final String findAllProducts = "SELECT * FROM products";
+
+    public ResultSet findAllProducts() throws SQLException {
+        Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        PreparedStatement ps = connection.prepareStatement(
+                INSERT_CONTRACT_SQL);
+        try (ResultSet rs = ps.executeQuery()) {
+            return rs;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 
     public ResultSet findOne(long contractId) {
