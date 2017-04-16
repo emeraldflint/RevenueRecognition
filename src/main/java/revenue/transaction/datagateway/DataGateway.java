@@ -21,13 +21,15 @@ public class DataGateway {
     private static final String INSERT_CONTRACT_SQL =
             "INSERT INTO contracts (product_id, revenue, dateSigned) VALUES (?, ?, ?)";
 
+    private static final String SELECT_ALL_PRODUCTS =
+            "SELECT * FROM products";
 
     private static final String findAllProducts = "SELECT * FROM products";
 
     public ResultSet findAllProducts() throws SQLException {
         Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
         PreparedStatement ps = connection.prepareStatement(
-                INSERT_CONTRACT_SQL);
+                SELECT_ALL_PRODUCTS);
         try (ResultSet rs = ps.executeQuery()) {
             return rs;
         } catch (SQLException e) {
